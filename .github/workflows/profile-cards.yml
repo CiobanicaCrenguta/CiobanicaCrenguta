@@ -1,0 +1,63 @@
+name: Update profile cards
+
+on:
+  schedule:
+    - cron: "17 3 * * *"      # every night
+  workflow_dispatch:           # "Run workflow" button in the Actions tab
+  push:
+    paths: [".github/workflows/profile-cards.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Top languages
+        uses: stats-organization/github-readme-stats-action@v2
+        continue-on-error: true
+        with:
+          card: top-langs
+          options: username=${{ github.repository_owner }}&layout=compact&langs_count=6&hide_border=true&border_radius=14&bg_color=2a1733&title_color=ffb35a&text_color=e9dcef
+          path: profile/top-langs.svg
+          token: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+
+      - name: Stats
+        uses: stats-organization/github-readme-stats-action@v2
+        continue-on-error: true
+        with:
+          card: stats
+          options: username=${{ github.repository_owner }}&show_icons=true&include_all_commits=true&hide_rank=true&hide_border=true&border_radius=14&bg_color=2a1733&title_color=ffb35a&text_color=e9dcef&icon_color=6fd6a2
+          path: profile/stats.svg
+          token: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+
+      - name: Streak
+        uses: DenverCoder1/github-readme-streak-stats@v1
+        continue-on-error: true
+        with:
+          options: user=${{ github.repository_owner }}&timezone=Europe/Bucharest&hide_border=true&border_radius=14&background=2a1733&stroke=3b2747&ring=ffb35a&fire=ff8fbf&currStreakNum=ffb35a&sideNums=e9dcef&currStreakLabel=6fd6a2&sideLabels=6fd6a2&dates=a893b5
+          path: profile/streak.svg
+          token: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Snake
+        uses: Platane/snk/svg-only@v3
+        continue-on-error: true
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            profile/snake-light.svg?color_snake=#e0679b&color_dots=#ebedf0,#c6eedb,#8fdcb6,#4fb98a,#2b7a5b
+            profile/snake-dark.svg?palette=github-dark&color_snake=#ffb35a&color_dots=#161b22,#24402f,#2e6b4b,#4fb98a,#8fe3bd
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/ 2>/dev/null || true
+          git commit -m "Update profile cards" || exit 0
+          git push
