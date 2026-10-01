@@ -1,4 +1,4 @@
-<img src="./assets/banner.svg" alt="Crenguta Ciobanica, written on an LED matrix next to a little branch with leaves and a blossom" width="100%">
+<img src="./banner.svg" alt="Crenguta Ciobanica, written on an LED matrix next to a little branch with leaves and a blossom" width="100%">
 
 I build software that ends somewhere physical: a weather station outside, a lamp on a desk, a phone in someone's hand. What I enjoy most is following one reading all the way through, from the firmware on an ESP32, over MQTT, into a database on a Raspberry Pi, and out the other side as a chart, an API response or a forecast.
 
