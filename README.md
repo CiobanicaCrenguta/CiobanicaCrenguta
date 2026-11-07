@@ -18,9 +18,12 @@ flowchart LR
     F --> E
 ```
 
-   ### Weather right now
-   <!-- WEATHER:START -->
-   <!-- WEATHER:END -->
+### Weather right now
+
+<!-- WEATHER:START -->
+<!-- WEATHER:END -->
+
+### Other things I've made
 
 | Project | What it does | Built with |
 |---|---|---|
