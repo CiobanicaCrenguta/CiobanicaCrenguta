@@ -21,9 +21,9 @@ flowchart LR
 ### Weather right now
 
 <!-- WEATHER:START -->
-Slatina: ☁️ Overcast · **14.9°C** · **Humidity** 81% · **Wind** 1.3 km/h · **Pressure** 1005 hPa
+Slatina: 🌧️ Rain · **12.0°C** · **Humidity** 94% · **Wind** 4.1 km/h · **Pressure** 1004 hPa
 
-<sub>Updated 2026-11-12 14:30 UTC · Data: [Open-Meteo.com](https://open-meteo.com/)</sub>
+<sub>Updated 2026-11-12 21:30 UTC · Data: [Open-Meteo.com](https://open-meteo.com/)</sub>
 <!-- WEATHER:END -->
 
 ### Other things I've made
